@@ -15,3 +15,23 @@ Tech Planning:
 2) FE : React
 3) BE : NodeJS, MongoDB
 4) Low level Design
+
+LLD:
+1) DB Design (Decide Collections and Document field types)
+    - User Collection (fname, lname, email, password, age, gender, preference)
+    - Connection Request Collection (from, to, status)
+2) Api Design
+    - Rest API will be used. (GET, POST, PUT, PATCH, DELETE are the http methods)
+    - /signup (POST)
+    - /login (POST)
+    - /profile (GET)
+    - /profile (POST)
+    - /profile (PATCH) 
+    - /feed (GET)
+    - /sendRequest (POST)
+        - ignore or interested
+    - /respondRequest (POST)
+        - accept
+        - reject
+    - /connections (GET)
+    - /requests (GET)
