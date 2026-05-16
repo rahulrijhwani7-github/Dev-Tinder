@@ -1,0 +1,37 @@
+{
+  "name": "dev-tinder",
+  "version": "1.0.0",
+  "description": "Tinder like application",
+  "keywords": [
+    "NodeJs",
+    "Node.js",
+    "Javascript",
+    "Typescript"
+  ],
+  "homepage": "https://github.com/rahulrijhwani7-github/Dev-Tinder#readme",
+  "bugs": {
+    "url": "https://github.com/rahulrijhwani7-github/Dev-Tinder/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahulrijhwani7-github/Dev-Tinder.git"
+  },
+  "license": "ISC",
+  "author": "Rahul Rijhwani",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch src --ext ts,js --exec ts-node src/app.ts",
+    "start": "node src/app.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.8.0",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
