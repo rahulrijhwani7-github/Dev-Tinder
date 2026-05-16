@@ -12,8 +12,8 @@ Features:
 
 Tech Planning:
 1) Two microservices : FE & BE
-2) FE : React
-3) BE : NodeJS, MongoDB
+2) FE : React, Typescript
+3) BE : NodeJS, Typescript, MongoDB
 4) Low level Design
 
 LLD:
