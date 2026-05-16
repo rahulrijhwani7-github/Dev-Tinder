@@ -2,18 +2,32 @@ const express = require('express');
 const app = express();
 const port = 7777;
 
-
-// The callback function is know as the request handler, which is executed when the app receives a request to the specified route at the specified port. In this case, it sends a response with the text 'Hello World!'.
-app.use("/", (req: any, res: { send: (arg0: string) => void }) => {
-  res.send('Hello world!');
+app.get('/user', (req: any, res: { send: (arg0: { id: number; name: string; age: number; email: string }) => void }) => {
+    console.log(req.query);  
+    res.send({
+        id: 1,
+        name: "John Doe",
+        age: 30,
+        email: "john.doe@example.com"
+    });
 });
 
-app.use("/test", (req: any, res: { send: (arg0: string) => void }) => {
-  res.send('Hello test test!');
+app.get('/user/:id/:name/:email', (req: any, res: { send: (arg0: string | { id: number; name: string; age: number; email: string }) => void }) => {
+    console.log(req.params);
+    res.send({
+        id: req.params.id,
+        name: req.params.name,
+        age: 30,
+        email: req.params.email
+    });
 });
 
-app.use("/hello", (req: any, res: { send: (arg0: string) => void }) => {
-  res.send('Hello hello hello!');
+app.post('/user', (req: any, res: {send: (arg0: string) => void }) => {
+    res.send('Data inserted successfully into db!');
+});
+
+app.delete('/user', (req: any, res: {send: (arg0: string) => void }) => {
+  res.send('Data deleted successfully from db!');
 });
 
 // NOTE: The order of the routes matters. 
@@ -26,6 +40,10 @@ app.use("/hello", (req: any, res: { send: (arg0: string) => void }) => {
 // before the more general route. For example, you can define "/test" and "/hello" before "/". 
 // This way, requests to "/test" and "/hello" will be handled by their respective routes, 
 // and only requests to "/" will be handled by the "/" route.
+
+app.use("/user", (req: any, res: { send: (arg0: string) => void }) => {
+  res.send('Hello Fallback route');
+});
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
