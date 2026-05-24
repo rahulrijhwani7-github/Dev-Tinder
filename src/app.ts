@@ -2,14 +2,21 @@ const express = require('express');
 const app = express();
 const port = 7777;
 
-app.get('/user', (req: any, res: { send: (arg0: { id: number; name: string; age: number; email: string }) => void }) => {
+// Note:The callback functions are called route handlers, and the paths are their corresponding routes.
+// The route handlers are executed when the app receives a request to the specified route and HTTP method.
+// One route can have multiple route handlers, which are executed in the order they are defined.
+app.get('/user', (req: any, res: { send: (arg0: { id: number; name: string; age: number; email: string }) => void }, next: () => void) => {
     console.log(req.query);  
     res.send({
         id: 1,
         name: "John Doe",
         age: 30,
         email: "john.doe@example.com"
-    });
+    })},
+     (req: any, res: { send: (arg0: string) => void }, next: () => void) => {
+    console.log("This is the second callback function for the /user route.");
+    res.send('Hello from the second callback function!');
+    next();
 });
 
 app.get('/user/:id/:name/:email', (req: any, res: { send: (arg0: string | { id: number; name: string; age: number; email: string }) => void }) => {
