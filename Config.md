@@ -3,9 +3,14 @@
 - Create a Collection
 - Make first request (GET)
 - Handle get and post call separately (Instead of app.use, use app.get & app.post)
-- There is a sepaarte use of ?, +, (), * in the routes
+- There is a sepaarte use of ?, +, (), \* in the routes
 - We can also use regex in routes
 - It is possible to ready query params in teh routes
-- Reacding the dynamic routes is also a  great fetaure
-
- 
+- Reacding the dynamic routes is also a great fetaure
+- Handling multiple route handlers using next.
+- We saw that we can wrap the route handlers in an array and the behaviour will remain the same.
+- Difference between the importance of route definition orders when "use" method is used instead of any other method type like get, put, patch, post, delete...
+- We saw scenarios where error comes because of trying to send the response second time using the consequent route handlers.
+- What is a Middlewear
+- How express js actually handles requst behind the scenes : The concept of express traversing through all the matching routes until it finds a handler which is actually sending the reponse back.
+-
