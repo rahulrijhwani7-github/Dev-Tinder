@@ -2,6 +2,11 @@ const express = require("express");
 const app = express();
 const port = 7777;
 
+interface Error {
+  status: string;
+  statusCode: number;
+}
+
 app.get(
   "/:id",
   (req: any, res: { send: (arg0: string) => void }, next: () => void) => {
@@ -140,6 +145,20 @@ app.delete("/user", (req: any, res: { send: (arg0: string) => void }) => {
 app.use("/user", (req: any, res: { send: (arg0: string) => void }) => {
   res.send("Hello Fallback route");
 });
+
+app.all(
+  "*",
+  (
+    req: any,
+    res: { send: (arg0: string) => void },
+    next: (arg0: Error) => void,
+  ) => {
+    const err = new Error("Cant find on server: 404");
+    err.message = "fail";
+    err.statusCode = 404;
+    next(err);
+  },
+);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
